@@ -1,0 +1,14 @@
+FROM python:3.11-slim AS builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+# Copia el proyecto completo (el .dockerignore excluye .env, tests, logs).
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
+EXPOSE 8080
+# Sin --reload en producción; las env vars llegan por el runtime (ECS/Secrets Manager).
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080", "--workers", "2"]

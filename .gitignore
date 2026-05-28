@@ -1,0 +1,41 @@
+# ─── Secrets — NUNCA committear ─────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.local
+!.env.example
+
+# ─── Logs ───────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ─── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Virtualenv
+.venv/
+venv/
+ENV/
+env/
+
+# Testing & type checking
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# ─── OS / IDE ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

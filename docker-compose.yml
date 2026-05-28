@@ -1,0 +1,15 @@
+services:
+  hana-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: hana-bridge
+    restart: always
+    ports:
+      - "8080:8080"
+    # Secretos y config vienen del .env (gitignored) — NUNCA hardcodeados aquí.
+    env_file:
+      - .env
+    volumes:
+      - .:/app          # hot reload de todo el código en dev
+      - /app/__pycache__

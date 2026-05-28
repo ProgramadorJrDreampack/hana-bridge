@@ -1,0 +1,19 @@
+.git
+.gitignore
+# Secretos — NUNCA en la imagen (en prod llegan por env / Secrets Manager)
+.env
+.env.*
+!.env.example
+# Logs y caches
+logs/
+*.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+# Tests y docs no van a la imagen de runtime
+tests/
+README.md
